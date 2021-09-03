@@ -3,7 +3,9 @@ import numpy as np
 import argparse
 
 class TriangCalcClass(object):
-    """Calculate x and y coords of intersection of two lines defined by 2 points each"""
+    """Calculate x and y coords of intersection of two lines defined by 2 points each
+    
+    """
     init_coords = {
         'x1': None,
         'y1': None,
