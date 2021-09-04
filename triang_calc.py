@@ -81,11 +81,12 @@ class TriangCalcClass(object):
             )
             self.px = np.linalg.det(px_over) / np.linalg.det(p_under)
             self.py = np.linalg.det(py_over) / np.linalg.det(p_under)
-        except[]:
+        except TypeError:
             print("Solution not converge")
         return self.px, self.py
 
-    def calculate(self, *args, **kwargs):
+
+    def calculate(self, *args: float, **kwargs: float):
         """Calculate the coordinates of the point .
         """
         if (not args) == False: self.args_unpack(*args)
@@ -127,7 +128,7 @@ class TriangCalcClass(object):
         self.print_coord(self.px, self.py)
 
 
-    def print_coord(self, px, py):
+    def print_coord(self, *args):
         """Print rounded values, return not rounded values
 
         Args:
@@ -137,14 +138,15 @@ class TriangCalcClass(object):
         Returns:
             px, py: not rounded
         """        
-        print(f'Px: {round(px, self.rnd)}, Py: {round(py, self.rnd)}')
-        return px, py
+        print(f'Px: {round(self.px, self.rnd)}, Py: {round(self.py, self.rnd)}')
+        return self.px, self.py
+
               
 if __name__ == '__main__':
     t = TriangCalcClass()
-    t.calculate(0,0,1,1,2,0,2,1)
+    t.calculate(0,0,0.1,1,1,0,0,500e+100)
 
-    # t.calculate(x1=380, y1=-1373, x2=385, y2=-1385, x3=587, y3=-2016, x4=574, y4=-2026)
+    # t.calculate(x1=380e+10, y1=-1373e+10, x2=385, y2=-1385, x3=587, y3=-2016, x4=574, y4=-2026)
 
     # t.update_second(578+1, -2016+1, 574+1, -2026+1)
 
@@ -164,3 +166,4 @@ if __name__ == '__main__':
     # t.calculate(input())
     # input()
 
+    
